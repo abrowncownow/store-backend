@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
   try{
-    const products = await Category.findAll({
+    const products = await Product.findAll({
       include: [{
         model: Category,
       },
@@ -123,7 +123,7 @@ router.delete('/:id', async (req, res) => {
       where: {
         id: req.params.id
       }});
-    product ? res.status(200).json({header: `${product.name} deleted successfully`}):
+    product ? res.status(200).json({header: `ID ${re.params.id} deleted successfully`}):
     res.status(404).json({header: `Product ID ${req.params.id} not found.`})
   } catch (err) {
     res.status(500).json(err);
