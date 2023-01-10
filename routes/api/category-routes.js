@@ -50,7 +50,7 @@ router.put('/:id', async (req, res) => {
     const category = await Category.update(req.body, {
       where: {id: req.params.id},
     });
-    category ? res.status(200).json({header: 'Category updated successfully'}) :
+    category ? res.status(200).json({header: `${category.category_name} updated successfully`}) :
     res.status(404).json({header: `Category ID ${req.params.id} not found`});
   } catch (err) {
     res.status(500).json(err);
@@ -63,7 +63,7 @@ router.delete('/:id', async (req, res) => {
     const category = await Category.destroy({
       where : {id: req.params.id}
     });
-    category ? res.status(200).json({header: `Category successfully deleted`}) :
+    category ? res.status(200).json({header: `${category.category_name} successfully deleted`}) :
     res.status(404).json({header: `Category ID ${req.params.id} not found`});
   } catch (err) {
     res.status(500).json(err);
