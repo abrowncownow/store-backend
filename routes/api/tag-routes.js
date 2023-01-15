@@ -55,7 +55,7 @@ router.put('/:id', async (req, res) => {
       }
     });
   !tag ? res.status(404).json({body: 'Tag ID not found'}):
-  res.status(200).json({header: `Tag '${tag.name}' updated`}, {tag})
+  res.status(200).json(`Tag updated.`)
   } catch (err){
     res.status(500).json(err);
   }
@@ -70,7 +70,7 @@ router.delete('/:id', async (req, res) => {
       }
     });
     !tag ? res.status(404).json({body: 'Tag ID not found'}):
-    res.status(200).json({header: `Tag '${tag.name}' Deleted`}, {tag})
+    res.status(200).json({header: `Tag ${req.params.id} deleted`})
   } catch (err) {
     res.status(500).json(err);
   }
